@@ -66,7 +66,7 @@ class HomePage extends Component{
 				<div style={{margin:10}}>
 					<ScoreShares team={this.props.team} />
 				</div>
-				<div style={{margin:10, display:"flex", flex:1, flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
+				<div style={{margin:10, minWidth:"50%", display:"flex", flex:1, flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
 					<ScoreTimeline team={this.props.team} />
 				</div>
 			</PageTemplate>
