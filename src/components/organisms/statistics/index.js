@@ -1,1 +1,2 @@
-export ScoreShares from './scoreShares.js';
+export ScoreShares    from './scoreShares.js';
+export ScoreTimeline  from './scoreTimeline.js';

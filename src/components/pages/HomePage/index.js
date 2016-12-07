@@ -1,7 +1,7 @@
-import React, {Component}       													from 'react';
-import {connect}                													from 'react-redux';
-import { PageTemplate, Team, Deck, ScoreShares }   				from 'components';
-import { TeamActionner, DeckActionner, GameActionner }		from 'reduxApp';
+import React, {Component}       																					from 'react';
+import {connect}                																					from 'react-redux';
+import { PageTemplate, Team, Deck, ScoreShares, ScoreTimeline }   				from 'components';
+import { TeamActionner, DeckActionner, GameActionner }										from 'reduxApp';
 
 class HomePage extends Component{
 
@@ -65,6 +65,9 @@ class HomePage extends Component{
 				</div>
 				<div style={{margin:10}}>
 					<ScoreShares team={this.props.team} />
+				</div>
+				<div style={{margin:10, display:"flex", flex:1, flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
+					<ScoreTimeline team={this.props.team} />
 				</div>
 			</PageTemplate>
     )

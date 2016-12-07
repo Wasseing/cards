@@ -78,7 +78,6 @@ export default class ScoreShares extends Component{
         borderRadius:15,
       },
 		}
-		console.log("rendered")
     return (
       <MaterialCard style={styles.card}>
         <div style={styles.container}>

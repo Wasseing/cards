@@ -1087,6 +1087,30 @@ change-emitter@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/change-emitter/-/change-emitter-0.1.2.tgz#6b88ca4d5d864e516f913421b11899a860aee8db"
 
+chart.js@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-1.1.1.tgz#a9b17054220bd45cbdb176fd6bcb8783ef871a7d"
+
+chart.js@^2.3.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-2.4.0.tgz#44198073f0f43e5e16662e108420d92652a3c9a3"
+  dependencies:
+    chartjs-color "^2.0.0"
+    moment "^2.10.6"
+
+chartjs-color-string@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/chartjs-color-string/-/chartjs-color-string-0.4.0.tgz#57748d4530ae28d8db0a5492182ba06dfdf2f468"
+  dependencies:
+    color-name "^1.0.0"
+
+chartjs-color@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/chartjs-color/-/chartjs-color-2.0.0.tgz#7f60c7256589b24914814ece757659117381e35b"
+  dependencies:
+    chartjs-color-string "^0.4.0"
+    color-convert "^0.5.3"
+
 cheerio@^0.22.0:
   version "0.22.0"
   resolved "https://registry.yarnpkg.com/cheerio/-/cheerio-0.22.0.tgz#a9baa860a3f9b595a6b81b1a86873121ed3a269e"
@@ -1188,6 +1212,14 @@ co@^4.6.0:
 code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
+
+color-convert@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-0.5.3.tgz#bdb6c69ce660fadffe0b0007cc447e1b9f7282bd"
+
+color-name@^1.0.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.1.tgz#4b1415304cf50028ea81643643bd82ea05803689"
 
 colors@1.0.3:
   version "1.0.3"
@@ -3473,6 +3505,10 @@ mkdirp@^0.5.0, mkdirp@^0.5.1, "mkdirp@>=0.5 0", mkdirp@~0.5.0, mkdirp@~0.5.1, mk
   dependencies:
     minimist "0.0.8"
 
+moment, moment@^2.10.6:
+  version "2.17.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
+
 ms@0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
@@ -3489,6 +3525,10 @@ multimatch@^2.1.0:
     array-union "^1.0.1"
     arrify "^1.0.0"
     minimatch "^3.0.0"
+
+murmurhash-js@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/murmurhash-js/-/murmurhash-js-1.0.0.tgz#b06278e21fc6c37fa5313732b0412bcb6ae15f51"
 
 mute-stream@0.0.5:
   version "0.0.5"
@@ -3997,6 +4037,12 @@ random-js:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/random-js/-/random-js-1.0.8.tgz#968fd689a6f25d6c0aac766283de2f688c9c190a"
 
+random-material-color@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/random-material-color/-/random-material-color-1.0.2.tgz#de6de9b0562006380211c764b4229f6420cdcd7e"
+  dependencies:
+    murmurhash-js "^1.0.0"
+
 randomatic@^1.1.3:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/randomatic/-/randomatic-1.1.5.tgz#5e9ef5f2d573c67bd2b8124ae90b5156e457840b"
@@ -4041,13 +4087,23 @@ react-addons-transition-group@^15.0.0:
   version "15.4.0"
   resolved "https://registry.yarnpkg.com/react-addons-transition-group/-/react-addons-transition-group-15.4.0.tgz#dbcb8a6a466c6d54f347710345e0004b699a68e0"
 
+react-chartjs@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/react-chartjs/-/react-chartjs-0.8.0.tgz#d41386b3d3cbfef9003f5a655e7ea48a49fbfa19"
+
+react-chartjs2@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-chartjs2/-/react-chartjs2-1.1.0.tgz#c7259f46e37001fc5c56daa3ce065384df60601f"
+  dependencies:
+    chart.js "^2.3.0"
+
 react-deep-force-update@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-2.0.1.tgz#4f7f6c12c3e7de42f345992a3c518236fa1ecad3"
 
-react-dom@^15.3.2:
-  version "15.4.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.4.0.tgz#6a97a69000966570db48c746bc4b7b0ca50d1534"
+react-dom@^15.4.1:
+  version "15.4.1"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.4.1.tgz#d54c913261aaedb17adc20410d029dcc18a1344a"
   dependencies:
     fbjs "^0.8.1"
     loose-envify "^1.1.0"
@@ -4120,9 +4176,9 @@ react-tap-event-plugin:
   dependencies:
     fbjs "^0.8.6"
 
-react@^15.3.2:
-  version "15.4.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-15.4.0.tgz#736c1c7c542e8088127106e1f450b010f86d172b"
+react@^15.4.1:
+  version "15.4.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-15.4.1.tgz#498e918602677a3983cd0fd206dfe700389a0dd6"
   dependencies:
     fbjs "^0.8.4"
     loose-envify "^1.1.0"
