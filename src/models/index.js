@@ -5,3 +5,4 @@ export * from './deck';
 export * from './rule';
 export * from './utils';
 export * from './trophys';
+export * from './game';

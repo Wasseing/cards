@@ -28,7 +28,12 @@ const TeamReducer = (state = initialState, action) => {
       case TeamActionsTypes.TEAM_INCREMENT_PLAYER_SCORE:
         index = state.get("players").findIndex((player)=>player.get("id")==action.player.get("id"));
         if(index<0){return state};
-	  		return state.set("players",  state.get("players").update(index,(player)=>player.set("score",player.get("score").push(Score(player.get("score").last().get('value')+action.increment)))));
+	  		return state.set("players",  state.get("players").update(index,(player)=>player.set("score",player.get("score").push(Score(player.get("score").last().get('value')+action.increment,action.rule)))));
+
+      case TeamActionsTypes.TEAM_INCREMENT_PLAYER_GAVE:
+        index = state.get("players").findIndex((player)=>player.get("id")==action.player.get("id"));
+        if(index<0){return state};
+  	  	return state.set("players",  state.get("players").update(index,(player)=>player.set("gave",player.get("gave").push(Score(player.get("gave").last().get('value')+action.increment,action.rule)))));
 
       case TeamActionsTypes.TEAM_SET_RANDOM_PLAYER_AS_CURRENT:
         return state.set("currentIndex", Math.floor(Math.random()*state.get("players").size));

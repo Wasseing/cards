@@ -1,29 +1,7 @@
 import React, {Component, PropTypes}      from 'react';
 import {Text,MainTheme} 									from 'components';
 import {DECK_COLORS, DECK_SUITES}         from 'models';
-
-const SUITES_IMAGES = {
-  "CLUB"    :'https://cdn1.iconfinder.com/data/icons/sin-city-memories/128/suit-club-16.png',
-  "SPADE"   :'https://cdn1.iconfinder.com/data/icons/sin-city-memories/128/suit-spade-16.png',
-  "DIAMOND" :'https://cdn1.iconfinder.com/data/icons/sin-city-memories/128/suit-diamond-16.png',
-  "HEART"   :'https://cdn1.iconfinder.com/data/icons/sin-city-memories/128/suit-heart-16.png',
-}
-
-const HEAD_NUMBERS ={
-  11:"J",
-  12:"Q",
-  13:"K",
-  10:"10",
-  9:"9",
-  8:"8",
-  7:"7",
-  6:"6",
-  5:"5",
-  4:"4",
-  3:"3",
-  2:"2",
-  1:"A",
-}
+import {HEAD_NUMBERS, SUITES_UNICODES}    from './constants.js';
 
 export default class Card extends Component{
 
@@ -37,6 +15,10 @@ export default class Card extends Component{
   getNumber(){
     return HEAD_NUMBERS[this.props.rank];
   }
+
+	getSuite(){
+		return SUITES_UNICODES[this.props.suite];
+	}
 
   render(){
 		const styles = {
@@ -56,7 +38,7 @@ export default class Card extends Component{
         display:'flex',
         flexDirection:'row',
         alignItems:'center',
-        backgroundColor:"#37474E",
+        backgroundColor:MainTheme.palette.blackCard,
         borderTopLeftRadius:15,
         borderTopRightRadius:15,
       },
@@ -66,7 +48,7 @@ export default class Card extends Component{
         display:'flex',
         flexDirection:'row',
         alignItems:'center',
-        backgroundColor:"rgba(184, 44, 44, 1)",
+        backgroundColor:MainTheme.palette.redCard,
         borderTopLeftRadius:15,
         borderTopRightRadius:15,
       },
@@ -78,7 +60,7 @@ export default class Card extends Component{
         alignItems:'center',
         justifyContent:"flex-start",
         transform:"rotate(180deg)",
-        backgroundColor:"#37474E",
+        backgroundColor:MainTheme.palette.blackCard,
         borderTopLeftRadius:15,
         borderTopRightRadius:15,
       },
@@ -90,13 +72,22 @@ export default class Card extends Component{
         alignItems:'center',
         justifyContent:"flex-start",
         transform:"rotate(180deg)",
-        backgroundColor:"rgba(184, 44, 44, 1)",
+        backgroundColor:MainTheme.palette.redCard,
         borderTopLeftRadius:15,
         borderTopRightRadius:15,
       },
+			suiteBlack:{
+				fontSize:17,
+				color:MainTheme.palette.blackCard,
+			},
+			suiteRed:{
+				fontSize:17,
+				color:MainTheme.palette.redCard,
+			},
       iconContainer:{
         display:"flex",
-        padding:10,
+				height:40,
+				width:40,
         flexDirection:'row',
         justifyContent:"center",
         alignItems:'center',
@@ -122,14 +113,13 @@ export default class Card extends Component{
         flex:4,
       },
 		}
-    const img = SUITES_IMAGES[this.props.suite];
     return (
       <div onClick={()=>this.props.onClick&&this.props.onClick({color:this.props.color,suite:this.props.suite,rank:this.props.rank})} style={styles.card}>
         <div style={(this.props.color == DECK_COLORS.red)?styles.headerRed : styles.headerBlack}>
           <div style={styles.value}>
             <Text style={styles.cardNum}>{this.getNumber()}</Text>
             <div style={styles.iconContainer}>
-              <img src={SUITES_IMAGES[this.props.suite]} height="15" width="15"/>
+              <Text style={(this.props.color == DECK_COLORS.red)?styles.suiteRed:styles.suiteBlack}>{this.getSuite()}</Text>
             </div>
           </div>
         </div>
@@ -140,7 +130,7 @@ export default class Card extends Component{
           <div style={styles.value}>
             <Text style={styles.cardNum}>{this.getNumber()}</Text>
             <div style={styles.iconContainer}>
-              <img src={SUITES_IMAGES[this.props.suite]} height="15" width="15"/>
+              <Text style={(this.props.color == DECK_COLORS.red)?styles.suiteRed:styles.suiteBlack}>{this.getSuite()}</Text>
             </div>
           </div>
         </div>

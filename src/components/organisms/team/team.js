@@ -87,7 +87,7 @@ export default class Team extends Component{
 				<div style={styles.container}>
 					<Text style={styles.title}>TEAM</Text>
 					<div style={styles.separator}/>
-					<PlayersList onSetPlayerColorClick={this.props.onSetPlayerColorClick} currentPlayer={this.getCurrentPlayer()} onPlayerClick={this.props.onPlayerClick} list={this.props.team.get("players").toArray()}/>
+					<PlayersList onSetPlayerColorClick={this.props.onSetPlayerColorClick} currentPlayer={this.getCurrentPlayer()} onPlayerClick={this.props.onPlayerClick} list={this.props.team.get("players")}/>
 					<div style={styles.actionsContainer}>
 						<TextField style={{width:null}} value={this.state.playersName} onChange={this.setPlayersName.bind(this)} hintText="Choose your name" />
 						<div style={{width:"40px"}}/>

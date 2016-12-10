@@ -77,13 +77,13 @@ export default class DeckStatistics extends Component{
         </div>
 				<div style={styles.row}>
           <div style={styles.icon}>
-            <Icon name={"FaCircle"} family={"FA"} style={{fontSize:20,color:"rgba(184, 44, 44, 1)"}}/>
+            <Icon name={"FaCircle"} family={"FA"} style={{fontSize:20,color:MainTheme.palette.redCard}}/>
           </div>
           <Text style={styles.title}>{this.getNbRedCard()}</Text>
         </div>
 				<div style={styles.row}>
           <div style={styles.icon}>
-            <Icon name={"FaCircle"} family={"FA"} style={{fontSize:20,color:"#37474E"}}/>
+            <Icon name={"FaCircle"} family={"FA"} style={{fontSize:20,color:MainTheme.palette.blackCard}}/>
           </div>
           <Text style={styles.title}>{this.getNbBlackCard()}</Text>
         </div>

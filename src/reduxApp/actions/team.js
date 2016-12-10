@@ -5,6 +5,7 @@ export const TYPES = {
 	TEAM_ADD_PLAYER:'TEAM_ADD_PLAYER',
 	TEAM_REMOVE_PLAYER:'TEAM_REMOVE_PLAYER',
 	TEAM_INCREMENT_PLAYER_SCORE:'TEAM_INCREMENT_PLAYER_SCORE',
+	TEAM_INCREMENT_PLAYER_GAVE:'TEAM_INCREMENT_PLAYER_GAVE',
 	TEAM_SET_RANDOM_PLAYER_AS_CURRENT:'TEAM_SET_RANDOM_PLAYER_AS_CURRENT',
 	TEAM_SET_PLAYER_COLOR:'TEAM_SET_PLAYER_COLOR',
 }
@@ -37,11 +38,21 @@ export default class TeamActionner{
 		}
 	}
 
-	static incrementPlayerScore(player, increment){
+	static incrementPlayerScore(player, increment, rule){
 		return {
 			type:TYPES.TEAM_INCREMENT_PLAYER_SCORE,
 			increment:increment,
 			player:player,
+			rule:rule,
+		}
+	}
+
+	static incrementPlayerGave(player, increment, rule){
+		return {
+			type:TYPES.TEAM_INCREMENT_PLAYER_GAVE,
+			increment:increment,
+			player:player,
+			rule:rule,
 		}
 	}
 

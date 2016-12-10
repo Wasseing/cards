@@ -11,9 +11,8 @@ export default class Text extends Component{
 
   render(){
     return (
-			<span style={{...this.props.style, fontFamily:'Roboto, sans-serif',userSelect:"none"}}>{this.props.children}</span>
+			<span onClick={this.props.onClick} style={{...this.props.style, fontFamily:'Roboto, sans-serif',userSelect:"none"}}>{this.props.children}</span>
     )
   }
-
 
 };

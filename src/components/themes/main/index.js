@@ -6,10 +6,12 @@ import {
   grey300,
   grey400,
   grey500,
+  grey900,
   white,
   red400,
   red300,
   red600,
+  red800,
   darkBlack,
   fullBlack,
 } from 'material-ui/styles/colors';
@@ -30,6 +32,8 @@ const MainTheme =  {
     borderColor: grey300,
     pickerHeaderColor: cyan500,
     shadowColor: fullBlack,
+    redCard:red800,
+    blackCard:grey900,
   },
 };
 

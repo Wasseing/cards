@@ -7,7 +7,8 @@ let COLORS = [];
 export default (name) => {
   return Map({
     name:name,
-    score:List([Score(0)]),
+    score:List([Score(0,null)]),
+    gave:List([Score(0,null)]),
     id:++PLAYER_CURRENT_ID,
     trophys:List([TROPHYS.PARTICIPANT]),
     color:Utils.getRandomColor(),

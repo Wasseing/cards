@@ -23,4 +23,9 @@ export default class Deck{
     const copyDeck = deck.concat(List(DECK));
     return Deck.getShuffleFromIndex(copyDeck.toArray(),index);
   }
+
+  static getCurrentCard(deck){
+    if(!deck){return null};
+    return deck.get("cards").get(deck.get("currentCard"));
+  }
 }

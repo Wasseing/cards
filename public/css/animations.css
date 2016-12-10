@@ -73,3 +73,85 @@
   opacity: 0;
   transition: opacity 170ms ease, transform 170ms ease;
 }
+
+
+/**
+*
+*RULES LIST ITEM ANIMATION
+*
+**/
+
+.ruleListItem-appear {
+  transform: scale(.95);
+  opacity: .1;
+}
+
+.ruleListItem-appear.ruleListItem-appear-active {
+  transform: scale(1);
+  opacity: 1;
+  transition: opacity 170ms ease, transform 170ms ease;
+}
+
+.ruleListItem-enter {
+  transform: scale(.95);
+  opacity: 0;
+}
+
+.ruleListItem-enter.ruleListItem-enter-active {
+  transform: scale(1);
+  opacity: 1;
+  transition: opacity 170ms ease, transform 170ms ease;
+}
+
+.ruleListItem-leave {
+  transform: scale(1);
+  opacity: 1;
+
+}
+
+.ruleListItem-leave.ruleListItem-leave-active {
+  transform: scale(.95);
+  opacity: 0;
+  transition: opacity 170ms ease, transform 170ms ease;
+}
+
+
+/**
+*
+*LIGHT CARD LIST ITEM ANIMATION
+*
+**/
+
+.lightCards-appear {
+  transform: scale(.95);
+  opacity: .1;
+}
+
+.lightCards-appear.lightCards-appear-active {
+  transform: scale(1);
+  opacity: 1;
+  transition: opacity 170ms ease, transform 170ms ease;
+}
+
+.lightCards-enter {
+  transform: scale(.95);
+  opacity: 0;
+}
+
+.lightCards-enter.lightCards-enter-active {
+  transform: scale(1);
+  opacity: 1;
+  transition: opacity 170ms ease, transform 170ms ease;
+}
+
+.lightCards-leave {
+  transform: scale(1);
+  opacity: 1;
+
+}
+
+.lightCards-leave.lightCards-leave-active {
+  transform: scale(.95);
+  opacity: 0;
+  transition: opacity 170ms ease, transform 170ms ease;
+}

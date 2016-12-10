@@ -1,7 +1,7 @@
 import React, {Component}       																					from 'react';
 import {connect}                																					from 'react-redux';
-import { PageTemplate, Team, Deck, ScoreShares, ScoreTimeline }   				from 'components';
-import { TeamActionner, DeckActionner, GameActionner }										from 'reduxApp';
+import { PageTemplate, Team, Deck, ScoreShares, ScoreTimeline, Rules }   	from 'components';
+import { TeamActionner, DeckActionner, GameActionner, RulesActionner }		from 'reduxApp';
 
 class HomePage extends Component{
 
@@ -21,7 +21,30 @@ class HomePage extends Component{
 	}
 
 	onPlayerClick(player){
-		this.props.dispatch(TeamActionner.incrementPlayerScore(player, 1));
+		this.props.dispatch(TeamActionner.incrementPlayerScore(player, 1, null));
+	}
+
+	onRulesApplied(incrementsByRule){
+		if(!incrementsByRule){return};
+		incrementsByRule.map((ruleIncrements)=>{
+			if(!ruleIncrements){return};
+			ruleIncrements.map((increment)=>{
+				increment.giving?
+				this.props.dispatch(TeamActionner.incrementPlayerGave(increment.player, increment.value, increment.rule))
+				:
+				this.props.dispatch(TeamActionner.incrementPlayerScore(increment.player, increment.value, increment.rule))
+			})
+		})
+	}
+
+	onRuleActivated(rule){
+		if(!rule || !rule.getId){return}
+		this.props.dispatch(RulesActionner.activateRule(rule.getId()));
+	}
+
+	onRuleDeactivated(rule){
+		if(!rule || !rule.getId){return}
+		this.props.dispatch(RulesActionner.deactivateRule(rule.getId()));
 	}
 
 	onSetPlayerColorClick(player){
@@ -63,6 +86,9 @@ class HomePage extends Component{
 				<div style={{margin:10}}>
 					<Team onSetPlayerColorClick={this.onSetPlayerColorClick.bind(this)} onResetTeam={this.onResetTeam.bind(this)} onSetRandomPlayerClicked={this.onSetRandomPlayerClicked.bind(this)} onPlayerClick={this.onPlayerClick.bind(this)} team={this.props.team} playerAdded={this.onPlayerAdded.bind(this)} playerRemoved={this.onPlayerRemoved.bind(this)}/>
 				</div>
+				<div style={{margin:10,minWidth:"25%", display:"flex", flex:1, flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
+					<Rules onRuleDeactivated={this.onRuleDeactivated.bind(this)} onRuleActivated={this.onRuleActivated.bind(this)} onRulesApplied={this.onRulesApplied.bind(this)} game={this.props.game} deck={this.props.deck} team={this.props.team} rules={this.props.rules} />
+				</div>
 				<div style={{margin:10}}>
 					<ScoreShares team={this.props.team} />
 				</div>
@@ -73,7 +99,6 @@ class HomePage extends Component{
     )
   }
 
-
 };
 
 function selectPropertyFromStore(state) {
@@ -81,6 +106,7 @@ function selectPropertyFromStore(state) {
 		team:state.Team,
 		game:state.Game,
 		deck:state.Deck,
+		rules:state.Rules,
 	}
 }
 

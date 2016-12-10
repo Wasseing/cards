@@ -6,9 +6,6 @@ import ActionAdd 																										from 'material-ui/svg-icons/content/a
 import IconButton 																									from 'material-ui/IconButton';
 import RaisedButton 																								from 'material-ui/RaisedButton';
 import {Text, PlayersList, Card, MainTheme, DeckStatistics} 				from 'components';
-import {List}																												from 'immutable';
-import TextField 																										from 'material-ui/TextField';
-import Slider 																											from 'material-ui/Slider';
 
 
 export default class Deck extends Component{
@@ -87,19 +84,6 @@ export default class Deck extends Component{
 				justifyContent:"flex-start",
 				alignItems:"center",
 			},
-			sliderContainer:{
-				alignSelf:'stretch',
-				flexDirection:"row",
-				alignItems:'center',
-				justifyContent:'center',
-				marginLeft:10,
-				display:'flex',
-			},
-			slider:{
-				width:100,
-				height:20,
-				margin:0,
-			}
 		}
 
     const card = this.getCurrentCard();
