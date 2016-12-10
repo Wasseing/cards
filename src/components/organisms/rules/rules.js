@@ -85,7 +85,7 @@ export default class Rules extends Component{
     return (
 			<Card style={styles.card}>
 				<div style={styles.container}>
-					<Text style={styles.title}>DECK</Text>
+					<Text style={styles.title}>RULES</Text>
           <div style={styles.separator}/>
 					<div style={styles.content}>
 						<div style={styles.listContainer}>
