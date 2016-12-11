@@ -5,7 +5,7 @@ import {List}                 from 'immutable';
 
 export default class TakingSocreRule extends DirectScoreRule{
   constructor(id){
-    super(id,"Taking point","Directly take points");
+    super(id,"Taking points","Directly take points");
     this.GIVING = false;
   }
 
