@@ -30,7 +30,7 @@ export default class RuleListItem extends Component{
   render(){
 		const styles = {
 			card:{
-				padding:10,
+				padding:20,
 				backgroundColor:this.props.isHighlighted?MainTheme.palette.accent2Color:null,
 			},
 			container:{

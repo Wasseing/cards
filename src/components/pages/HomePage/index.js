@@ -37,6 +37,19 @@ class HomePage extends Component{
 		})
 	}
 
+	onThrophysRulesApplied(actionsByRule){
+		if(!actionsByRule){return};
+		actionsByRule.map((actions)=>{
+			if(!actions){return};
+			actions.map((action)=>{
+				action.giving?
+				this.props.dispatch(TeamActionner.addTrophyToPlayer(action.player, action.trophy, action.rule))
+				:
+				this.props.dispatch(TeamActionner.removeTrophyToPlayer(action.player, action.trophy, action.rule))
+			})
+		})
+	}
+
 	onRuleActivated(rule){
 		if(!rule || !rule.getId){return}
 		this.props.dispatch(RulesActionner.activateRule(rule.getId()));
@@ -87,7 +100,7 @@ class HomePage extends Component{
 					<Team onSetPlayerColorClick={this.onSetPlayerColorClick.bind(this)} onResetTeam={this.onResetTeam.bind(this)} onSetRandomPlayerClicked={this.onSetRandomPlayerClicked.bind(this)} onPlayerClick={this.onPlayerClick.bind(this)} team={this.props.team} playerAdded={this.onPlayerAdded.bind(this)} playerRemoved={this.onPlayerRemoved.bind(this)}/>
 				</div>
 				<div style={{margin:10,minWidth:"25%", display:"flex", flex:1, flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
-					<Rules onRuleDeactivated={this.onRuleDeactivated.bind(this)} onRuleActivated={this.onRuleActivated.bind(this)} onRulesApplied={this.onRulesApplied.bind(this)} game={this.props.game} deck={this.props.deck} team={this.props.team} rules={this.props.rules} />
+					<Rules onRuleDeactivated={this.onRuleDeactivated.bind(this)} onRuleActivated={this.onRuleActivated.bind(this)} onRulesApplied={this.onRulesApplied.bind(this)} onThrophysRulesApplied={this.onThrophysRulesApplied.bind(this)} game={this.props.game} deck={this.props.deck} team={this.props.team} rules={this.props.rules} />
 				</div>
 				<div style={{margin:10}}>
 					<ScoreShares team={this.props.team} />

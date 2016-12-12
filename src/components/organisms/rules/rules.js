@@ -21,8 +21,12 @@ export default class Rules extends Component{
 	applyRules(nextProps){
 		const increments = nextProps.rules.get("list").map((rule)=>{
 			return rule.apply(nextProps.deck, nextProps.team);
-		})
-		this.props.onRulesApplied(increments);
+		});
+		const actions = nextProps.rules.get("trophysList").map((rule)=>{
+			return rule.apply(nextProps.deck, nextProps.team);
+		});
+		this.props.onRulesApplied && this.props.onRulesApplied(increments);
+		this.props.onThrophysRulesApplied && this.props.onThrophysRulesApplied(actions);
 	}
 
 	getCardList(){
@@ -116,4 +120,5 @@ Rules.propTypes = {
 	onRuleActivated:PropTypes.func,
 	onRuleDeactivated:PropTypes.func,
 	onRulesApplied:PropTypes.func,
+	onThrophysRulesApplied:PropTypes.func,
 }

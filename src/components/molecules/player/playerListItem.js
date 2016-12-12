@@ -67,7 +67,7 @@ export default class PlayerListItem extends Component{
 				<div style={styles.container}>
 	        <div style={styles.up}>
 	          <Text style={styles.name}>{this.props.player.get("name")}</Text>
-	          <ScoreValue score={this.props.player.get("score")}/>
+	          <ScoreValue gave={this.props.player.get("gave")} score={this.props.player.get("score")}/>
 					</div>
 					<div style={styles.line}>
 						<TrophyList list={this.props.player.get("trophys")} />

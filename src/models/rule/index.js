@@ -6,3 +6,4 @@ export AllInRule            from './allInRule.js';
 export NextScoresRule       from './nextScoresRule.js';
 export PrevScoresRule       from './prevScoresRule.js';
 export RULES                from './rules.js';
+export *                    from './trophys';

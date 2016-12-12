@@ -1,7 +1,8 @@
 
 export default class Trophy {
 
-  constructor(name, description, iconName, iconFamily, backgroundColor, iconColor){
+  constructor(id, name, description, iconName, iconFamily, backgroundColor, iconColor){
+    this.id               = id;
     this.name             = name;
     this.description      = description,
     this.iconName         = iconName;

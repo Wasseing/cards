@@ -1,9 +1,10 @@
 import {RulesActionTypes} 	      from 'reduxApp';
 import {Map, List} 								from 'immutable';
-import {RULES}                    from 'models';
+import {RULES, TrophysRules}      from 'models';
 
 export const initialState = Map({
   list:List(RULES),
+  trophysList:List(TrophysRules),
 });
 
 const RulesReducer = (state = initialState, action) => {

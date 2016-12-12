@@ -35,6 +35,16 @@ const TeamReducer = (state = initialState, action) => {
         if(index<0){return state};
   	  	return state.set("players",  state.get("players").update(index,(player)=>player.set("gave",player.get("gave").push(Score(player.get("gave").last().get('value')+action.increment,action.rule)))));
 
+      case TeamActionsTypes.TEAM_ADD_THROPHY_TO_PLAYER:
+        index = state.get("players").findIndex((player)=>player.get("id")==action.player.get("id"));
+        if(index<0){return state};
+        return state.set("players",  state.get("players").update(index,(player)=>player.set("trophys",player.get("trophys").push(action.trophy))));
+
+      case TeamActionsTypes.TEAM_REMOVE_THROPHY_TO_PLAYER:
+        index = state.get("players").findIndex((player)=>player.get("id")==action.player.get("id"));
+        if(index<0){return state};
+        return state.set("players",  state.get("players").update(index,(player)=>player.set("trophys",player.get("trophys").filter((trophy)=>{return trophy.id != action.trophy.id}))));
+
       case TeamActionsTypes.TEAM_SET_RANDOM_PLAYER_AS_CURRENT:
         return state.set("currentIndex", Math.floor(Math.random()*state.get("players").size));
 

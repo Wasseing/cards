@@ -6,6 +6,8 @@ export const TYPES = {
 	TEAM_REMOVE_PLAYER:'TEAM_REMOVE_PLAYER',
 	TEAM_INCREMENT_PLAYER_SCORE:'TEAM_INCREMENT_PLAYER_SCORE',
 	TEAM_INCREMENT_PLAYER_GAVE:'TEAM_INCREMENT_PLAYER_GAVE',
+	TEAM_ADD_THROPHY_TO_PLAYER:'TEAM_ADD_THROPHY_TO_PLAYER',
+	TEAM_REMOVE_THROPHY_TO_PLAYER:'TEAM_REMOVE_THROPHY_TO_PLAYER',
 	TEAM_SET_RANDOM_PLAYER_AS_CURRENT:'TEAM_SET_RANDOM_PLAYER_AS_CURRENT',
 	TEAM_SET_PLAYER_COLOR:'TEAM_SET_PLAYER_COLOR',
 }
@@ -35,6 +37,22 @@ export default class TeamActionner{
 		return {
 			type:TYPES.TEAM_SET_PLAYER_COLOR,
 			player:player,
+		}
+	}
+
+	static addTrophyToPlayer(player, trophy){
+		return {
+			type:TYPES.TEAM_ADD_THROPHY_TO_PLAYER,
+			player:player,
+			trophy:trophy,
+		}
+	}
+
+	static removeTrophyToPlayer(player, trophy){
+		return {
+			type:TYPES.TEAM_REMOVE_THROPHY_TO_PLAYER,
+			player:player,
+			trophy:trophy,
 		}
 	}
 

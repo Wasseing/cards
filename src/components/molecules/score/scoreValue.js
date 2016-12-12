@@ -19,7 +19,7 @@ export default class ScoreValue extends Component{
       }
 		}
     return (
-      <Text style={styles.score}>{this.props.score.last().get("value")}</Text>
+      <Text style={styles.score}>{`${this.props.score.last().get("value")} / ${this.props.gave.last().get("value")}`}</Text>
     )
   }
 
@@ -27,5 +27,6 @@ export default class ScoreValue extends Component{
 };
 
 ScoreValue.propTypes = {
-  score:PropTypes.object,
+  score:PropTypes.object.isRequired,
+	gave:PropTypes.object.isRequired,
 }
