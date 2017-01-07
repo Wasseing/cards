@@ -7,6 +7,7 @@ import {
   grey400,
   grey500,
   grey900,
+  blue500,
   white,
   red400,
   red300,
@@ -34,6 +35,7 @@ const MainTheme =  {
     shadowColor: fullBlack,
     redCard:red800,
     blackCard:grey900,
+    footer:blue500,
   },
 };
 

@@ -1,6 +1,6 @@
 import React, {Component, PropTypes}       													from 'react';
 import RaisedButton 																								from 'material-ui/RaisedButton';
-import {Card} 																											from 'material-ui/Card';
+import Card 																												from 'material-ui/Card/Card';
 import {List} 																											from 'immutable';
 import {MainTheme, Text, RulesList, CardList, PlayerTarget} 				from 'components';
 

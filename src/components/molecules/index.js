@@ -6,3 +6,4 @@ export * from './score';
 export * from './deck';
 export * from './trophy';
 export * from './placeholders';
+export * from './footer';

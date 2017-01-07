@@ -1,5 +1,5 @@
 import React, {Component, PropTypes}      from 'react';
-import {Card}															from 'material-ui/Card';
+import Card																from 'material-ui/Card/Card';
 import {Icon,MainTheme}										from 'components';
 
 export default class LightTrophy extends Component{

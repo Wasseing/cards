@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
-import styled from 'styled-components'
+import styled               from 'styled-components'
+import {Footer}             from 'components';
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,7 +13,12 @@ const Wrapper = styled.div`
 
 const PageTemplate = ({ children, ...props }) => {
   return (
-    <Wrapper {...props}>{children}</Wrapper>
+    <Wrapper {...props}>
+      {children}
+      <div style={{minWidth:"100%", display:"flex", flex:1, flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
+        <Footer/>
+      </div>
+    </Wrapper>
   )
 }
 

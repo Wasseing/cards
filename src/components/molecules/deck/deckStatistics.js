@@ -71,7 +71,7 @@ export default class DeckStatistics extends Component{
         <div style={styles.separator}/>
         <div style={styles.row}>
           <div style={styles.icon}>
-            <Icon name={"MdCheckCircle"} family={"MD"} style={{fontSize:20,color:"#00897B"}}/>
+            <Icon name={"FaCheckCircle"} family={"FA"} style={{fontSize:20,color:"#00897B"}}/>
           </div>
           <Text style={styles.title}>{this.getNbLeftCard()}</Text>
         </div>

@@ -1,5 +1,5 @@
 import React, {Component, PropTypes}       	          				from 'react';
-import {Card}											                    				from 'material-ui';
+import Card											                    					from 'material-ui/Card/Card';
 import {Text, ScoreValue, MainTheme, TrophyList, Icon}      	from 'components';
 import ActionSetColor 																				from 'material-ui/svg-icons/editor/insert-chart';
 import IconButton 																						from 'material-ui/IconButton';

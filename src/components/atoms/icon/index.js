@@ -1,12 +1,8 @@
 import React, {Component, PropTypes}           from 'react';
 import * as FontAwesome                        from 'react-icons/lib/fa';
-import * as MaterialIcons                      from 'react-icons/lib/md';
-import * as IonicIcons                         from 'react-icons/lib/io';
 
 export const ICONS_FONT_NAMES = {
   FA:FontAwesome,
-  MD:MaterialIcons,
-  IO:IonicIcons,
 }
 
 export default class Icon extends Component{
