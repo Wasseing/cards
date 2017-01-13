@@ -93,22 +93,22 @@ class HomePage extends Component{
   render(){
     return (
       <PageTemplate>
-				<div style={{margin:10}}>
+				<div style={{margin:10, display:"flex", flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
 					<Deck addDeck={this.addDeck.bind(this)} onResetDeck={this.onDeckReset.bind(this)} onShuffleDeck={this.onShuffleDeck.bind(this)} onCardClick={this.onCardClick.bind(this)} deck={this.props.deck}/>
 				</div>
-				<div style={{margin:10}}>
+				<div style={{margin:10, display:"flex", flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
 					<Team onSetPlayerColorClick={this.onSetPlayerColorClick.bind(this)} onResetTeam={this.onResetTeam.bind(this)} onSetRandomPlayerClicked={this.onSetRandomPlayerClicked.bind(this)} onPlayerClick={this.onPlayerClick.bind(this)} team={this.props.team} playerAdded={this.onPlayerAdded.bind(this)} playerRemoved={this.onPlayerRemoved.bind(this)}/>
 				</div>
-				<div style={{margin:10,minWidth:"25%", display:"flex", flex:1, flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
+				<div style={{margin:10,minWidth:"90%", display:"flex", flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
 					<Rules onRuleDeactivated={this.onRuleDeactivated.bind(this)} onRuleActivated={this.onRuleActivated.bind(this)} onRulesApplied={this.onRulesApplied.bind(this)} onThrophysRulesApplied={this.onThrophysRulesApplied.bind(this)} game={this.props.game} deck={this.props.deck} team={this.props.team} rules={this.props.rules} />
 				</div>
-				<div style={{margin:10}}>
-					<ScoreShares team={this.props.team} />
-				</div>
-				<div style={{margin:10, minWidth:"50%", display:"flex", flex:1, flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
+				<div style={{margin:10, minWidth:"90%", display:"flex", flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
 					<ScoreTimeline team={this.props.team} />
 				</div>
-				<div style={{margin:10, minWidth:"25%", display:"flex", flex:1, flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
+				<div style={{margin:10, display:"flex", flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
+					<ScoreShares team={this.props.team} />
+				</div>
+				<div style={{margin:10, minWidth:"25%", display:"flex", flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
 					<FindTarget team={this.props.team} />
 				</div>
 			</PageTemplate>
