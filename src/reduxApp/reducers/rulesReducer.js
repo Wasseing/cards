@@ -4,7 +4,6 @@ import {RULES, TrophysRules}      from 'models';
 
 export const initialState = Map({
   list:List(RULES),
-  trophysList:List(TrophysRules),
 });
 
 const RulesReducer = (state = initialState, action) => {

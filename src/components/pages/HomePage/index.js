@@ -29,12 +29,27 @@ class HomePage extends Component{
 		incrementsByRule.map((ruleIncrements)=>{
 			if(!ruleIncrements){return};
 			ruleIncrements.map((increment)=>{
-				increment.giving?
-				this.props.dispatch(TeamActionner.incrementPlayerGave(increment.player, increment.value, increment.rule))
-				:
-				this.props.dispatch(TeamActionner.incrementPlayerScore(increment.player, increment.value, increment.rule))
+				if(increment.trophy){//trophy rule case
+					this.applyTrophyRule(increment);
+				}else if(increment.value){//score rule case
+					this.applyScoreRule(increment);
+				}
 			})
 		})
+	}
+
+	applyScoreRule(increment){
+		increment.giving?
+		this.props.dispatch(TeamActionner.incrementPlayerGave(increment.player, increment.value, increment.rule))
+		:
+		this.props.dispatch(TeamActionner.incrementPlayerScore(increment.player, increment.value, increment.rule))
+	}
+
+	applyTrophyRule(increment){
+		increment.giving?
+		this.props.dispatch(TeamActionner.addTrophyToPlayer(increment.player, increment.trophy, increment.rule))
+		:
+		this.props.dispatch(TeamActionner.removeTrophyToPlayer(increment.player, increment.trophy, increment.rule))
 	}
 
 	onThrophysRulesApplied(actionsByRule){
@@ -42,10 +57,7 @@ class HomePage extends Component{
 		actionsByRule.map((actions)=>{
 			if(!actions){return};
 			actions.map((action)=>{
-				action.giving?
-				this.props.dispatch(TeamActionner.addTrophyToPlayer(action.player, action.trophy, action.rule))
-				:
-				this.props.dispatch(TeamActionner.removeTrophyToPlayer(action.player, action.trophy, action.rule))
+
 			})
 		})
 	}
@@ -100,7 +112,7 @@ class HomePage extends Component{
 					<Team onSetPlayerColorClick={this.onSetPlayerColorClick.bind(this)} onResetTeam={this.onResetTeam.bind(this)} onSetRandomPlayerClicked={this.onSetRandomPlayerClicked.bind(this)} onPlayerClick={this.onPlayerClick.bind(this)} team={this.props.team} playerAdded={this.onPlayerAdded.bind(this)} playerRemoved={this.onPlayerRemoved.bind(this)}/>
 				</div>
 				<div style={{margin:10,minWidth:"90%", display:"flex", flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
-					<Rules onRuleDeactivated={this.onRuleDeactivated.bind(this)} onRuleActivated={this.onRuleActivated.bind(this)} onRulesApplied={this.onRulesApplied.bind(this)} onThrophysRulesApplied={this.onThrophysRulesApplied.bind(this)} game={this.props.game} deck={this.props.deck} team={this.props.team} rules={this.props.rules} />
+					<Rules onRuleDeactivated={this.onRuleDeactivated.bind(this)} onRuleActivated={this.onRuleActivated.bind(this)} onRulesApplied={this.onRulesApplied.bind(this)} game={this.props.game} deck={this.props.deck} team={this.props.team} rules={this.props.rules} />
 				</div>
 				<div style={{margin:10, minWidth:"90%", display:"flex", flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
 					<ScoreTimeline team={this.props.team} />
