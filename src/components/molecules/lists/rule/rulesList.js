@@ -49,7 +49,7 @@ export default class RulesList extends Component{
 								<div key={index} style={styles.ruleContainer}>
                   <RuleListItem
 										 isHighlighted={this.props.highlightedRule && this.props.highlightedRule.getId()  == rule.getId()}
-										 onRuleClicked={()=>this.props.onRuleClicked && this.props.onRuleClicked(rule)}
+										 onRuleClicked={(event)=>this.props.onRuleClicked && this.props.onRuleClicked(rule,event)}
 										 onRuleActivated={()=>this.props.onRuleActivated && this.props.onRuleActivated(rule)}
 										 onRuleDeactivated={()=>this.props.onRuleDeactivated && this.props.onRuleDeactivated(rule)}
 										 rule={rule}/>

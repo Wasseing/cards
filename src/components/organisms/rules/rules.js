@@ -31,7 +31,7 @@ export default class Rules extends Component{
 	}
 
 	highlightRule(rule){
-		if(!rule  || this.state.highlightedRule == rule.getId()){return}
+		if(!rule  || (this.state.highlightedRule && this.state.highlightedRule.getId() == rule.getId())){return}
 		this.setState({highlightedRule:rule});
 	}
 

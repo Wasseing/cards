@@ -32,6 +32,7 @@ export default class RuleListItem extends Component{
 			card:{
 				padding:20,
 				backgroundColor:this.props.isHighlighted?MainTheme.palette.accent2Color:null,
+				cursor:"pointer",
 			},
 			container:{
         display:'flex',
@@ -51,10 +52,10 @@ export default class RuleListItem extends Component{
       },
 		}
     return (
-      <Card style={styles.card}>
+      <Card onClick={this.onClick.bind(this)} style={styles.card}>
 				<div style={styles.container}>
 					<div style={styles.line}>
-						<Text onClick={this.onClick.bind(this)} style={styles.name}>{this.props.rule.getName()}</Text>
+						<Text style={styles.name}>{this.props.rule.getName()}</Text>
 						<div>
 							<Toggle onToggle={this.onToggle.bind(this)} defaultToggled={this.props.rule.isActivated()} style={styles.toggle}/>
 						</div>
