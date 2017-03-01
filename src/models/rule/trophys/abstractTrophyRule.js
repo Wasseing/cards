@@ -5,7 +5,7 @@ export default class AbstractThrophyRule extends AbstractRule{
 
   constructor(id, name, description){
     super(id, name, description)
-    this.activated = true;
+    this.activated = false;
   }
 
   getAction(player, trophy, giving){
