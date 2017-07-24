@@ -1,20 +1,18 @@
-import AbstractRule from '../abstractRule.js';
-import {List}       from 'immutable';
+import AbstractRule from "../abstractRule.js";
+import { List } from "immutable";
 
-export default class AbstractThrophyRule extends AbstractRule{
-
-  constructor(id, name, description){
-    super(id, name, description)
+export default class AbstractThrophyRule extends AbstractRule {
+  constructor(id, name, description) {
+    super(id, name, description);
     this.activated = false;
   }
 
-  getAction(player, trophy, giving){
+  getAction(player, trophy, giving) {
     return {
-      rule:this,
-      player:player,
-      trophy:trophy,
-      giving:giving,
-    }
+      rule: this,
+      player: player,
+      trophy: trophy,
+      giving: giving
+    };
   }
-
 }

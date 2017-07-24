@@ -1,141 +1,171 @@
-import React, {Component}       																																from 'react';
-import {connect}                																																from 'react-redux';
-import { PageTemplate, Team, Deck, ScoreShares, ScoreTimeline, Rules, FindTarget }   						from 'components';
-import { TeamActionner, DeckActionner, GameActionner, RulesActionner }													from 'reduxApp';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { PageTemplate, Team, Deck, ScoreShares, ScoreTimeline, Rules, FindTarget } from "components";
+import { TeamActionner, DeckActionner, GameActionner, RulesActionner } from "reduxApp";
+import { GiphyApi } from "models";
 
-class HomePage extends Component{
+class HomePage extends Component {
+    constructor(props) {
+        super(props);
+		this.state = {};
+		GiphyApi.getGifFromTag("noob").then((r)=>r.json().then(console.log)).catch(console.log);
+    }
 
-	constructor(props){
-		super(props);
-		this.state = {
+    onPlayerAdded(playersName) {
+        this.props.dispatch(TeamActionner.addPlayer(playersName));
+    }
 
-		}
-	}
+    onPlayerRemoved(player) {
+        this.props.dispatch(TeamActionner.removePlayer(player));
+    }
 
-	onPlayerAdded(playersName){
-		this.props.dispatch(TeamActionner.addPlayer(playersName));
-	}
+    onPlayerClick(player) {
+        this.props.dispatch(TeamActionner.incrementPlayerScore(player, 1, null));
+    }
 
-	onPlayerRemoved(player){
-		this.props.dispatch(TeamActionner.removePlayer(player));
-	}
+    onRulesApplied(incrementsByRule) {
+        if (!incrementsByRule) {
+            return;
+        }
+        incrementsByRule.map(ruleIncrements => {
+            if (!ruleIncrements) {
+                return;
+            }
+            ruleIncrements.map(increment => {
+                if (increment.trophy) {
+                    //trophy rule case
+                    this.applyTrophyRule(increment);
+                } else if (increment.value) {
+                    //score rule case
+                    this.applyScoreRule(increment);
+                }
+            });
+        });
+    }
 
-	onPlayerClick(player){
-		this.props.dispatch(TeamActionner.incrementPlayerScore(player, 1, null));
-	}
+    applyScoreRule(increment) {
+        increment.giving
+            ? this.props.dispatch(TeamActionner.incrementPlayerGave(increment.player, increment.value, increment.rule))
+            : this.props.dispatch(TeamActionner.incrementPlayerScore(increment.player, increment.value, increment.rule));
+    }
 
-	onRulesApplied(incrementsByRule){
-		if(!incrementsByRule){return};
-		incrementsByRule.map((ruleIncrements)=>{
-			if(!ruleIncrements){return};
-			ruleIncrements.map((increment)=>{
-				if(increment.trophy){//trophy rule case
-					this.applyTrophyRule(increment);
-				}else if(increment.value){//score rule case
-					this.applyScoreRule(increment);
-				}
-			})
-		})
-	}
+    applyTrophyRule(increment) {
+        increment.giving
+            ? this.props.dispatch(TeamActionner.addTrophyToPlayer(increment.player, increment.trophy, increment.rule))
+            : this.props.dispatch(TeamActionner.removeTrophyToPlayer(increment.player, increment.trophy, increment.rule));
+    }
 
-	applyScoreRule(increment){
-		increment.giving?
-		this.props.dispatch(TeamActionner.incrementPlayerGave(increment.player, increment.value, increment.rule))
-		:
-		this.props.dispatch(TeamActionner.incrementPlayerScore(increment.player, increment.value, increment.rule))
-	}
+    onThrophysRulesApplied(actionsByRule) {
+        if (!actionsByRule) {
+            return;
+        }
+        actionsByRule.map(actions => {
+            if (!actions) {
+                return;
+            }
+            actions.map(action => {});
+        });
+    }
 
-	applyTrophyRule(increment){
-		increment.giving?
-		this.props.dispatch(TeamActionner.addTrophyToPlayer(increment.player, increment.trophy, increment.rule))
-		:
-		this.props.dispatch(TeamActionner.removeTrophyToPlayer(increment.player, increment.trophy, increment.rule))
-	}
+    onRuleActivated(rule) {
+        if (!rule || !rule.getId) {
+            return;
+        }
+        this.props.dispatch(RulesActionner.activateRule(rule.getId()));
+    }
 
-	onThrophysRulesApplied(actionsByRule){
-		if(!actionsByRule){return};
-		actionsByRule.map((actions)=>{
-			if(!actions){return};
-			actions.map((action)=>{
+    onRuleDeactivated(rule) {
+        if (!rule || !rule.getId) {
+            return;
+        }
+        this.props.dispatch(RulesActionner.deactivateRule(rule.getId()));
+    }
 
-			})
-		})
-	}
+    onSetPlayerColorClick(player) {
+        this.props.dispatch(TeamActionner.setPlayerColor(player));
+    }
 
-	onRuleActivated(rule){
-		if(!rule || !rule.getId){return}
-		this.props.dispatch(RulesActionner.activateRule(rule.getId()));
-	}
+    onCardClick(card) {
+        this.props.dispatch(GameActionner.nextRound());
+        this.props.dispatch(DeckActionner.next());
+        this.props.dispatch(TeamActionner.next());
+    }
 
-	onRuleDeactivated(rule){
-		if(!rule || !rule.getId){return}
-		this.props.dispatch(RulesActionner.deactivateRule(rule.getId()));
-	}
+    onSetRandomPlayerClicked() {
+        this.props.dispatch(TeamActionner.setRandomPlayerAsCurrent());
+    }
 
-	onSetPlayerColorClick(player){
-		this.props.dispatch(TeamActionner.setPlayerColor(player));
-	}
+    onShuffleDeck() {
+        this.props.dispatch(DeckActionner.shuffle());
+    }
 
-	onCardClick(card){
-		this.props.dispatch(GameActionner.nextRound());
-		this.props.dispatch(DeckActionner.next());
-		this.props.dispatch(TeamActionner.next());
-	}
+    onDeckReset() {
+        this.props.dispatch(DeckActionner.reset());
+    }
 
-	onSetRandomPlayerClicked(){
-		this.props.dispatch(TeamActionner.setRandomPlayerAsCurrent());
-	}
+    addDeck() {
+        this.props.dispatch(DeckActionner.addDeck());
+    }
 
-	onShuffleDeck(){
-		this.props.dispatch(DeckActionner.shuffle());
-	}
+    onResetTeam() {
+        this.props.dispatch(TeamActionner.reset());
+    }
 
-	onDeckReset(){
-		this.props.dispatch(DeckActionner.reset());
-	}
-
-	addDeck(){
-		this.props.dispatch(DeckActionner.addDeck());
-	}
-
-	onResetTeam(){
-		this.props.dispatch(TeamActionner.reset());
-	}
-
-  render(){
-    return (
-      <PageTemplate>
-				<div style={{margin:10, display:"flex", flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
-					<Deck addDeck={this.addDeck.bind(this)} onResetDeck={this.onDeckReset.bind(this)} onShuffleDeck={this.onShuffleDeck.bind(this)} onCardClick={this.onCardClick.bind(this)} deck={this.props.deck}/>
-				</div>
-				<div style={{margin:10, display:"flex", flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
-					<Team onSetPlayerColorClick={this.onSetPlayerColorClick.bind(this)} onResetTeam={this.onResetTeam.bind(this)} onSetRandomPlayerClicked={this.onSetRandomPlayerClicked.bind(this)} onPlayerClick={this.onPlayerClick.bind(this)} team={this.props.team} playerAdded={this.onPlayerAdded.bind(this)} playerRemoved={this.onPlayerRemoved.bind(this)}/>
-				</div>
-				<div style={{margin:10,minWidth:"90%", display:"flex", flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
-					<Rules onRuleDeactivated={this.onRuleDeactivated.bind(this)} onRuleActivated={this.onRuleActivated.bind(this)} onRulesApplied={this.onRulesApplied.bind(this)} game={this.props.game} deck={this.props.deck} team={this.props.team} rules={this.props.rules} />
-				</div>
-				<div style={{margin:10, minWidth:"90%", display:"flex", flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
-					<ScoreTimeline team={this.props.team} />
-				</div>
-				<div style={{margin:10, display:"flex", flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
-					<ScoreShares team={this.props.team} />
-				</div>
-				<div style={{margin:10, minWidth:"25%", display:"flex", flexDirection:"row", alignItems:'center', justifyContent:"center"}}>
-					<FindTarget team={this.props.team} />
-				</div>
-			</PageTemplate>
-    )
-  }
-
-};
+    render() {
+        return (
+            <PageTemplate>
+                <div style={{ margin: 10, display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+                    <Deck
+                        addDeck={this.addDeck.bind(this)}
+                        onResetDeck={this.onDeckReset.bind(this)}
+                        onShuffleDeck={this.onShuffleDeck.bind(this)}
+                        onCardClick={this.onCardClick.bind(this)}
+                        deck={this.props.deck}
+                    />
+                </div>
+                <div style={{ margin: 10, display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+                    <Team
+                        onSetPlayerColorClick={this.onSetPlayerColorClick.bind(this)}
+                        onResetTeam={this.onResetTeam.bind(this)}
+                        onSetRandomPlayerClicked={this.onSetRandomPlayerClicked.bind(this)}
+                        onPlayerClick={this.onPlayerClick.bind(this)}
+                        team={this.props.team}
+                        playerAdded={this.onPlayerAdded.bind(this)}
+                        playerRemoved={this.onPlayerRemoved.bind(this)}
+                    />
+                </div>
+                <div style={{ margin: 10, minWidth: "90%", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+                    <Rules
+                        onRuleDeactivated={this.onRuleDeactivated.bind(this)}
+                        onRuleActivated={this.onRuleActivated.bind(this)}
+                        onRulesApplied={this.onRulesApplied.bind(this)}
+                        game={this.props.game}
+                        deck={this.props.deck}
+                        team={this.props.team}
+                        rules={this.props.rules}
+                    />
+                </div>
+                <div style={{ margin: 10, minWidth: "90%", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+                    <ScoreTimeline team={this.props.team} />
+                </div>
+                <div style={{ margin: 10, display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+                    <ScoreShares team={this.props.team} />
+                </div>
+                <div style={{ margin: 10, minWidth: "25%", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+                    <FindTarget team={this.props.team} />
+                </div>
+            </PageTemplate>
+        );
+    }
+}
 
 function selectPropertyFromStore(state) {
-	return {
-		team:state.Team,
-		game:state.Game,
-		deck:state.Deck,
-		rules:state.Rules,
-	}
+    return {
+        team: state.Team,
+        game: state.Game,
+        deck: state.Deck,
+        rules: state.Rules
+    };
 }
 
 export default connect(selectPropertyFromStore)(HomePage);
