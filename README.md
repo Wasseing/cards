@@ -1,6 +1,7 @@
 ## Why
 
 To have a lot of fun of course :)
+you can have a look at the result [here](http://paulwasson.fr/chochoy/)
 
 ## Download
 
