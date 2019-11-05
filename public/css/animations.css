@@ -1,0 +1,157 @@
+/**
+*
+*TROPHY LIST ITEM ANIMATION
+*
+**/
+
+.trophy-appear {
+  transform: scale(.3);
+  opacity: .1;}
+
+.trophy-appear.trophy-appear-active {
+  transform: scale(1);
+  opacity: 1;  transition: opacity 390ms ease, transform 390ms ease;
+}
+
+.trophy-enter {
+  transform: scale(.3);
+  opacity: 0;}
+
+.trophy-enter.trophy-enter-active {
+  transform: scale(1);
+  opacity: 1;  transition: opacity 390ms ease, transform 390ms ease;
+}
+
+.trophy-leave {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.trophy-leave.trophy-leave-active {
+  transform: scale(.3);
+  opacity: 0;  transition: opacity 390ms ease, transform 390ms ease;
+}
+
+
+
+/**
+*
+*PLAYER LIST ITEM ANIMATION
+*
+**/
+
+.playerListItem-appear {
+  transform: scale(.95);
+  opacity: .1;
+}
+
+.playerListItem-appear.playerListItem-appear-active {
+  transform: scale(1);
+  opacity: 1;
+  transition: opacity 170ms ease, transform 170ms ease;
+}
+
+.playerListItem-enter {
+  transform: scale(.95);
+  opacity: 0;
+}
+
+.playerListItem-enter.playerListItem-enter-active {
+  transform: scale(1);
+  opacity: 1;
+  transition: opacity 170ms ease, transform 170ms ease;
+}
+
+.playerListItem-leave {
+  transform: scale(1);
+  opacity: 1;
+
+}
+
+.playerListItem-leave.playerListItem-leave-active {
+  transform: scale(.95);
+  opacity: 0;
+  transition: opacity 170ms ease, transform 170ms ease;
+}
+
+
+/**
+*
+*RULES LIST ITEM ANIMATION
+*
+**/
+
+.ruleListItem-appear {
+  transform: scale(.95);
+  opacity: .1;
+}
+
+.ruleListItem-appear.ruleListItem-appear-active {
+  transform: scale(1);
+  opacity: 1;
+  transition: opacity 170ms ease, transform 170ms ease;
+}
+
+.ruleListItem-enter {
+  transform: scale(.95);
+  opacity: 0;
+}
+
+.ruleListItem-enter.ruleListItem-enter-active {
+  transform: scale(1);
+  opacity: 1;
+  transition: opacity 170ms ease, transform 170ms ease;
+}
+
+.ruleListItem-leave {
+  transform: scale(1);
+  opacity: 1;
+
+}
+
+.ruleListItem-leave.ruleListItem-leave-active {
+  transform: scale(.95);
+  opacity: 0;
+  transition: opacity 170ms ease, transform 170ms ease;
+}
+
+
+/**
+*
+*LIGHT CARD LIST ITEM ANIMATION
+*
+**/
+
+.lightCards-appear {
+  transform: scale(.95);
+  opacity: .1;
+}
+
+.lightCards-appear.lightCards-appear-active {
+  transform: scale(1);
+  opacity: 1;
+  transition: opacity 170ms ease, transform 170ms ease;
+}
+
+.lightCards-enter {
+  transform: scale(.95);
+  opacity: 0;
+}
+
+.lightCards-enter.lightCards-enter-active {
+  transform: scale(1);
+  opacity: 1;
+  transition: opacity 170ms ease, transform 170ms ease;
+}
+
+.lightCards-leave {
+  transform: scale(1);
+  opacity: 1;
+
+}
+
+.lightCards-leave.lightCards-leave-active {
+  transform: scale(.95);
+  opacity: 0;
+  transition: opacity 170ms ease, transform 170ms ease;
+}
