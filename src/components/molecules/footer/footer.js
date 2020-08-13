@@ -24,7 +24,7 @@ export class Footer extends Component {
       }
     }
     return (
-      <Text onClick={this.onClick.bind(this)} style={styles.text}>{"Made with " + "\u2665" + " to save your night"}</Text>
+      <Text onClick={this.onClick.bind(this)} style={styles.text}>{"Made with " + "\u2665" + " a long time ago to save your nights"}</Text>
     )
   }
 
